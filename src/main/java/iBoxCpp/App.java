@@ -26,7 +26,7 @@ public class App {
 		if(!eventwatcher.checkValidDriectory()) return;
 		if(!s3handler.checkS3Info()) return;
 		
-		HashMap<WatchKey, Path> hm = new HashMap<>();
+		HashMap<WatchKey, Path> hm = new HashMap<WatchKey, Path>();
 		
 		try {
 			WatchService service = FileSystems.getDefault().newWatchService();	
