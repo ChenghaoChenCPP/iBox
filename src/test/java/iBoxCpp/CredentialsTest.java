@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class CredentialsTest {
 	
-	Credentials c;
+	private Credentials c;
 	@Before
 	public void init() {
 		 c = new Credentials();

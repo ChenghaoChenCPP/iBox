@@ -18,14 +18,15 @@ public class App {
 		String directory = "/Users/hoho/Desktop/CS5850/ibox"; //Please specify your directory
 		
 		EventWatcher eventwatcher = new EventWatcher();
-		S3Handler s3handler       = new S3Handler();
+		S3Handler s3handler = new S3Handler();
+		
 		
 		eventwatcher.setDirectory(directory);
 
 		if(!eventwatcher.checkValidDriectory()) return;
 		if(!s3handler.checkS3Info()) return;
 		
-		HashMap<WatchKey, Path> hm = new HashMap<WatchKey, Path>();
+		HashMap<WatchKey, Path> hm = new HashMap<>();
 		
 		try {
 			WatchService service = FileSystems.getDefault().newWatchService();	

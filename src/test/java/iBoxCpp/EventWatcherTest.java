@@ -10,7 +10,7 @@ import org.junit.Test;
 
 public class EventWatcherTest {
 	
-	EventWatcher e;
+	private EventWatcher e;
 	
 	@Before
 	public void init() {
