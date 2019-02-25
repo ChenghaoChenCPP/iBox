@@ -4,28 +4,39 @@ public class Credentials {
 	/*Please uses aws s3 access key ID and secret access key  
 	 * To obtain please to go aws -> IAM -> Users
 	 */
-	public final static String access_key_id = ""; 
-	public final static String secret_access_key = "";
+	public static String access_key_id = ""; 
+	public static String secret_access_key = "";
 	
 	public Credentials() {
 		
 	}
 	
 	public boolean checkCredentials() {
-		if(access_key_id.length()==0 || secret_access_key.length() ==0) {
+		if(access_key_id.length() == 0 || secret_access_key.length() == 0) {
 			System.err.println("Please fill in access_key_id and secret_access_key in Credentials.java");
 			return false;
 		}
 		return true;
 	}
-
-	public static String getAccessKeyId() {
+	
+	public static String getAccess_key_id() {
 		return access_key_id;
 	}
 
-	public static String getSecretAccessKey() {
+	public static void setAccess_key_id(String access_key_id) {
+		Credentials.access_key_id = access_key_id;
+	}
+
+	public static String getSecret_access_key() {
 		return secret_access_key;
 	}
+
+	public static void setSecret_access_key(String secret_access_key) {
+		Credentials.secret_access_key = secret_access_key;
+	}
+
+	
+
 	
 	
 }

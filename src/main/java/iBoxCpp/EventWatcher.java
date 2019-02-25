@@ -21,7 +21,7 @@ public class EventWatcher {
 	
 	public boolean checkValidDriectory() {
 		if(directory.equals("")) {
-			System.err.println("Path is empty");
+			System.out.println("Path is empty");
 			return false;
 		}
 		
@@ -30,17 +30,16 @@ public class EventWatcher {
 		if(!Files.exists(path))
 			return createDirectory(path);
 		
-		System.out.println("Path Exist");
 		return true;
 	}
 	
 	private boolean createDirectory(Path path) {
 		boolean created = new File(directory).mkdirs();
 		if(!created) {
-			System.err.println("Error occured while creating directory");
+			System.out.println("Error occured while creating directory");
 			return false;
 		}
-		System.out.println("Create path");
+		System.out.println("Created path");
 		return true;
 	}
 }

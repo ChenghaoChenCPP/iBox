@@ -42,7 +42,7 @@ public class App {
 				
 			}while(watchKey.reset());
 		}catch(Exception e) {
-			
+			System.out.println(e.getMessage());
 		}
 	}
 
