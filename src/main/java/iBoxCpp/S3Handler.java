@@ -40,15 +40,22 @@ public class S3Handler {
 		return true;
 	}
 	
-	public void updateBucket(WatchEvent.Kind<?> kind, Path eventDir, String fileName) {
+	public boolean updateBucket(WatchEvent.Kind<?> kind, Path eventDir, String fileName) {
 		if(kind == ENTRY_CREATE || kind == ENTRY_MODIFY) {
-			if(createEntry(eventDir, fileName))
-				System.out.println("Successfully uploaded "+fileName);;
+			if(createEntry(eventDir, fileName)) {
+				System.out.println("Successfully uploaded "+fileName);
+				return true;
+			}
+			System.out.println("Error when upload file on drive");	
 		}
 		else {
-			if(deleteEntry(eventDir, fileName))
-				System.out.println("Successfully deleted "+fileName);;
+			if(deleteEntry(eventDir, fileName)) {
+				System.out.println("Successfully deleted "+fileName);
+				return true;
+			}
+			System.out.println("Error when delete file on drive");
 		}
+		return false;
 	}
 	
 	private boolean createEntry(Path eventDir, String fileName) {

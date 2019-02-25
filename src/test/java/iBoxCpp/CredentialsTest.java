@@ -8,6 +8,7 @@ import org.junit.Test;
 public class CredentialsTest {
 	
 	private Credentials c;
+	
 	@Before
 	public void init() {
 		 c = new Credentials();
