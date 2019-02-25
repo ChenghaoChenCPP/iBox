@@ -29,11 +29,11 @@ public class EventWatcherTest {
 		assertTrue(e.checkValidDriectory());
 	}
 	
-	@Test
-	public void checkValidDirectoryWithNoWritePermission() {
-		e.setDirectory("./NoWritePermission/ibox");
-		assertFalse(e.checkValidDriectory());
-	}
+//	@Test
+//	public void checkValidDirectoryWithNoWritePermission() {
+//		e.setDirectory("./NoWritePermission/ibox");
+//		assertFalse(e.checkValidDriectory());
+//	}
 	
 	@Test
 	public void checkValidDirectoryWithCreateDirectory() {
