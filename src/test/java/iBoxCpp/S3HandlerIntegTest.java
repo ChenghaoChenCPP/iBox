@@ -26,26 +26,26 @@ public class S3HandlerIntegTest {
 		s3Test.checkS3Info();
 	}
 	
-	@Test
-	public void updateBucketIntegTestCreatingEntry() {
-		Path pathTest = Paths.get("./ibox");
-		boolean resTest = s3Test.updateBucket(ENTRY_CREATE, pathTest , "test.txt", "./ibox");
-		assertTrue(resTest);
-	}
-	
-	@Test
-	public void updateBucketIntegTestModifyEntry() {
-		Path pathTest = Paths.get("./ibox");
-		boolean resTest = s3Test.updateBucket(ENTRY_MODIFY, pathTest , "test.txt", "./ibox");
-		assertTrue(resTest);
-	}
-	
-	@Test
-	public void updateBucketIntegTestDeletingEntry() {
-		Path pathTest = Paths.get("./ibox");
-		boolean resTest = s3Test.updateBucket(ENTRY_DELETE, pathTest , "test.txt", "./ibox");
-		assertTrue(resTest);
-	}
+//	@Test
+//	public void updateBucketIntegTestCreatingEntry() {
+//		Path pathTest = Paths.get("./ibox");
+//		boolean resTest = s3Test.updateBucket(ENTRY_CREATE, pathTest , "test.txt", "./ibox");
+//		assertTrue(resTest);
+//	}
+//	
+//	@Test
+//	public void updateBucketIntegTestModifyEntry() {
+//		Path pathTest = Paths.get("./ibox");
+//		boolean resTest = s3Test.updateBucket(ENTRY_MODIFY, pathTest , "test.txt", "./ibox");
+//		assertTrue(resTest);
+//	}
+//	
+//	@Test
+//	public void updateBucketIntegTestDeletingEntry() {
+//		Path pathTest = Paths.get("./ibox");
+//		boolean resTest = s3Test.updateBucket(ENTRY_DELETE, pathTest , "test.txt", "./ibox");
+//		assertTrue(resTest);
+//	}
 	
 
 }

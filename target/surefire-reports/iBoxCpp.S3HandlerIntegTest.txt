@@ -1,9 +1,9 @@
 -------------------------------------------------------------------------------
 Test set: iBoxCpp.S3HandlerIntegTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 2.43 sec <<< FAILURE!
-updateBucketIntegTestCreatingEntry(iBoxCpp.S3HandlerIntegTest)  Time elapsed: 0.127 sec  <<< ERROR!
-com.amazonaws.services.s3.model.AmazonS3Exception: The AWS Access Key Id you provided does not exist in our records. (Service: Amazon S3; Status Code: 403; Error Code: InvalidAccessKeyId; Request ID: 09C4CC65E6F9ED19; S3 Extended Request ID: BSVpMGeC1k0+wHIXb+y8eDUm1p2OmcdNDKzgjdzdKwgL3BJtEN0k5FYJStXd9KcmFmdoHDthwQY=), S3 Extended Request ID: BSVpMGeC1k0+wHIXb+y8eDUm1p2OmcdNDKzgjdzdKwgL3BJtEN0k5FYJStXd9KcmFmdoHDthwQY=
+Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 2.248 sec <<< FAILURE!
+updateBucketIntegTestCreatingEntry(iBoxCpp.S3HandlerIntegTest)  Time elapsed: 0.161 sec  <<< ERROR!
+com.amazonaws.services.s3.model.AmazonS3Exception: The AWS Access Key Id you provided does not exist in our records. (Service: Amazon S3; Status Code: 403; Error Code: InvalidAccessKeyId; Request ID: 4E904828452868D5; S3 Extended Request ID: bNKtqlLNbOquGtsRNA8Vk+bKtU6uAG0mxM6wRJpm9tS76YUVu+HZfa0fC1dJcsCa7hMmS8vogOI=), S3 Extended Request ID: bNKtqlLNbOquGtsRNA8Vk+bKtU6uAG0mxM6wRJpm9tS76YUVu+HZfa0fC1dJcsCa7hMmS8vogOI=
 	at com.amazonaws.http.AmazonHttpClient$RequestExecutor.handleErrorResponse(AmazonHttpClient.java:1712)
 	at com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeOneRequest(AmazonHttpClient.java:1367)
 	at com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeHelper(AmazonHttpClient.java:1113)
@@ -54,8 +54,8 @@ com.amazonaws.services.s3.model.AmazonS3Exception: The AWS Access Key Id you pro
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 
-updateBucketIntegTestModifyEntry(iBoxCpp.S3HandlerIntegTest)  Time elapsed: 0.135 sec  <<< ERROR!
-com.amazonaws.services.s3.model.AmazonS3Exception: The AWS Access Key Id you provided does not exist in our records. (Service: Amazon S3; Status Code: 403; Error Code: InvalidAccessKeyId; Request ID: F4E4CC55717BC5B7; S3 Extended Request ID: RY9vo1TSMIvRXb6kLEzcuYJhm1yPHYi+yqVxmKtvfLg2p+k6Nor7doCKTd8gqGjc1U20zbPj/E0=), S3 Extended Request ID: RY9vo1TSMIvRXb6kLEzcuYJhm1yPHYi+yqVxmKtvfLg2p+k6Nor7doCKTd8gqGjc1U20zbPj/E0=
+updateBucketIntegTestModifyEntry(iBoxCpp.S3HandlerIntegTest)  Time elapsed: 0.132 sec  <<< ERROR!
+com.amazonaws.services.s3.model.AmazonS3Exception: The AWS Access Key Id you provided does not exist in our records. (Service: Amazon S3; Status Code: 403; Error Code: InvalidAccessKeyId; Request ID: 373E9EA871264FC5; S3 Extended Request ID: 5IB/KRHnmk6DA6Yw3PCjtHpZkIJni52GYjO8avlllr0rZQS8heEBCZlBfwzJ0vpZkDZ2ku09xH4=), S3 Extended Request ID: 5IB/KRHnmk6DA6Yw3PCjtHpZkIJni52GYjO8avlllr0rZQS8heEBCZlBfwzJ0vpZkDZ2ku09xH4=
 	at com.amazonaws.http.AmazonHttpClient$RequestExecutor.handleErrorResponse(AmazonHttpClient.java:1712)
 	at com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeOneRequest(AmazonHttpClient.java:1367)
 	at com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeHelper(AmazonHttpClient.java:1113)
@@ -106,8 +106,8 @@ com.amazonaws.services.s3.model.AmazonS3Exception: The AWS Access Key Id you pro
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 
-updateBucketIntegTestDeletingEntry(iBoxCpp.S3HandlerIntegTest)  Time elapsed: 0.13 sec  <<< ERROR!
-com.amazonaws.services.s3.model.AmazonS3Exception: The AWS Access Key Id you provided does not exist in our records. (Service: Amazon S3; Status Code: 403; Error Code: InvalidAccessKeyId; Request ID: FB05B7826D2F3994; S3 Extended Request ID: uc384hIvC5H8I7xCe4keDYvQb0il7eQoBX+Ml09rCeL9WAeNBifNxKl9INaGWccmZZ7XDYqW4DQ=), S3 Extended Request ID: uc384hIvC5H8I7xCe4keDYvQb0il7eQoBX+Ml09rCeL9WAeNBifNxKl9INaGWccmZZ7XDYqW4DQ=
+updateBucketIntegTestDeletingEntry(iBoxCpp.S3HandlerIntegTest)  Time elapsed: 0.138 sec  <<< ERROR!
+com.amazonaws.services.s3.model.AmazonS3Exception: The AWS Access Key Id you provided does not exist in our records. (Service: Amazon S3; Status Code: 403; Error Code: InvalidAccessKeyId; Request ID: 08A5BE80860B24F9; S3 Extended Request ID: BwS4hp9jd0SHIlUhQIJIjU3A+6lEKEKM8a6XjzIGAeWrX1TL5mGHeHI8+eJz0omvUutCbLRvoSo=), S3 Extended Request ID: BwS4hp9jd0SHIlUhQIJIjU3A+6lEKEKM8a6XjzIGAeWrX1TL5mGHeHI8+eJz0omvUutCbLRvoSo=
 	at com.amazonaws.http.AmazonHttpClient$RequestExecutor.handleErrorResponse(AmazonHttpClient.java:1712)
 	at com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeOneRequest(AmazonHttpClient.java:1367)
 	at com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeHelper(AmazonHttpClient.java:1113)

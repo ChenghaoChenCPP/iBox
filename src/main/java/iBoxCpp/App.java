@@ -38,7 +38,6 @@ public class App {
 				for(WatchEvent<?> event: watchKey.pollEvents()) {
 					WatchEvent.Kind<?> kind = event.kind();
 					Path eventPath = (Path) event.context();
-					//System.out.println(eventDir+" : "+ kind+": "+eventPath);
 					s3handler.updateBucket(kind, eventDir, eventPath.toString(),directory);					
 				}
 				

@@ -30,7 +30,6 @@ public class S3HandlerTest {
 	
 	@Before
 	public void init() {
-		//awsCredsTest = Mockito.mock(BasicAWSCredentials.class);
 		s3ClientTest = Mockito.mock(AmazonS3Client.class);
 		s3Test = new S3Handler();
 		cTest = new Credentials();
@@ -54,6 +53,14 @@ public class S3HandlerTest {
 	}
 	
 	@Test
+	public void updateBucketTestCreateErrorMessage() {
+		S3Handler s3updateBucketTest = Mockito.mock(S3Handler.class);
+		Path pathTest = Paths.get("./");
+		Mockito.when(s3updateBucketTest.updateBucket(ENTRY_CREATE, pathTest , "", "")).thenReturn(false);
+		assertFalse(s3updateBucketTest.updateBucket(ENTRY_CREATE, pathTest , "",""));
+	}
+	
+	@Test
 	public void updateBucketTestDelete() {
 		S3Handler s3updateBucketTest = Mockito.mock(S3Handler.class);
 		Path pathTest = Paths.get("./");
@@ -62,11 +69,27 @@ public class S3HandlerTest {
 	}
 	
 	@Test
+	public void updateBucketTestDeleteErrorMessage() {
+		S3Handler s3updateBucketTest = Mockito.mock(S3Handler.class);
+		Path pathTest = Paths.get("./");
+		Mockito.when(s3updateBucketTest.updateBucket(ENTRY_DELETE, pathTest , "", "")).thenReturn(false);
+		assertFalse(s3updateBucketTest.updateBucket(ENTRY_DELETE, pathTest , "",""));
+	}
+	
+	@Test
 	public void updateBucketTestModify() {
 		S3Handler s3updateBucketTest = Mockito.mock(S3Handler.class);
 		Path pathTest = Paths.get("./");
 		Mockito.when(s3updateBucketTest.updateBucket(ENTRY_MODIFY, pathTest , "", "")).thenReturn(true);
 		assertTrue(s3updateBucketTest.updateBucket(ENTRY_MODIFY, pathTest , "",""));
+	}
+	
+	@Test
+	public void updateBucketTestModifyErrorMessage() {
+		S3Handler s3updateBucketTest = Mockito.mock(S3Handler.class);
+		Path pathTest = Paths.get("./");
+		Mockito.when(s3updateBucketTest.updateBucket(ENTRY_MODIFY, pathTest , "", "")).thenReturn(false);
+		assertFalse(s3updateBucketTest.updateBucket(ENTRY_MODIFY, pathTest , "",""));
 	}
 
 }
