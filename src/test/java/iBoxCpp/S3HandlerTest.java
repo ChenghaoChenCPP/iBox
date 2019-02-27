@@ -49,24 +49,24 @@ public class S3HandlerTest {
 	public void updateBucketTestCreate() {
 		S3Handler s3updateBucketTest = Mockito.mock(S3Handler.class);
 		Path pathTest = Paths.get("./");
-		Mockito.when(s3updateBucketTest.updateBucket(ENTRY_CREATE, pathTest , "")).thenReturn(true);
-		assertTrue(s3updateBucketTest.updateBucket(ENTRY_CREATE, pathTest , ""));
+		Mockito.when(s3updateBucketTest.updateBucket(ENTRY_CREATE, pathTest , "", "")).thenReturn(true);
+		assertTrue(s3updateBucketTest.updateBucket(ENTRY_CREATE, pathTest , "",""));
 	}
 	
 	@Test
 	public void updateBucketTestDelete() {
 		S3Handler s3updateBucketTest = Mockito.mock(S3Handler.class);
 		Path pathTest = Paths.get("./");
-		Mockito.when(s3updateBucketTest.updateBucket(ENTRY_DELETE, pathTest , "")).thenReturn(true);
-		assertTrue(s3updateBucketTest.updateBucket(ENTRY_DELETE, pathTest , ""));
+		Mockito.when(s3updateBucketTest.updateBucket(ENTRY_DELETE, pathTest , "", "")).thenReturn(true);
+		assertTrue(s3updateBucketTest.updateBucket(ENTRY_DELETE, pathTest , "",""));
 	}
 	
 	@Test
 	public void updateBucketTestModify() {
 		S3Handler s3updateBucketTest = Mockito.mock(S3Handler.class);
 		Path pathTest = Paths.get("./");
-		Mockito.when(s3updateBucketTest.updateBucket(ENTRY_MODIFY, pathTest , "")).thenReturn(true);
-		assertTrue(s3updateBucketTest.updateBucket(ENTRY_MODIFY, pathTest , ""));
+		Mockito.when(s3updateBucketTest.updateBucket(ENTRY_MODIFY, pathTest , "", "")).thenReturn(true);
+		assertTrue(s3updateBucketTest.updateBucket(ENTRY_MODIFY, pathTest , "",""));
 	}
 
 }

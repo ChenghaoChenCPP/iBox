@@ -40,16 +40,16 @@ public class S3Handler {
 		return true;
 	}
 	
-	public boolean updateBucket(WatchEvent.Kind<?> kind, Path eventDir, String fileName) {
+	public boolean updateBucket(WatchEvent.Kind<?> kind, Path eventDir, String fileName, String directory) {
 		if(kind == ENTRY_CREATE || kind == ENTRY_MODIFY) {
-			if(createEntry(eventDir, fileName)) {
+			if(createEntry(eventDir, fileName, directory)) {
 				System.out.println("Successfully uploaded "+fileName);
 				return true;
 			}
 			System.out.println("Error when upload file on drive");	
 		}
 		else {
-			if(deleteEntry(eventDir, fileName)) {
+			if(deleteEntry(eventDir, fileName, directory)) {
 				System.out.println("Successfully deleted "+fileName);
 				return true;
 			}
@@ -58,15 +58,24 @@ public class S3Handler {
 		return false;
 	}
 	
-	private boolean createEntry(Path eventDir, String fileName) {
+	private boolean createEntry(Path eventDir, String fileName, String directory) {
 		File file = new File(eventDir+"/"+fileName);
+		fileName = AWSfileNameGenerator(eventDir, fileName, directory);
 		s3Client.putObject(new PutObjectRequest(bucketName, fileName, file));
 		return true;
 	}
 	
-	private boolean deleteEntry(Path eventDir, String fileName) {
+	private boolean deleteEntry(Path eventDir, String fileName, String directory) {
+		fileName = AWSfileNameGenerator(eventDir, fileName, directory);
 		 s3Client.deleteObject(new DeleteObjectRequest(bucketName,fileName));
 		 return true;
 	}
 	
+	private String AWSfileNameGenerator(Path eventDir, String fileName, String directory) {
+		String eventDirectory = eventDir.toString();
+		if(eventDirectory.equals(directory)) {
+			return fileName;
+		}
+		return eventDirectory.substring(directory.length()+1, eventDirectory.length())+"/"+fileName;
+	}
 }
