@@ -18,34 +18,58 @@ import com.amazonaws.services.s3.AmazonS3Client;
 
 public class S3HandlerIntegTest {
 	
-	private static S3Handler s3Test;
+	private S3Handler s3Test;
+	private Credentials cTest;
 	
-	@BeforeClass
-	public static void init() {
+	@Before
+	public void init() {
 		s3Test = new S3Handler();
 		s3Test.checkS3Info();
+		cTest = new Credentials();
+		cTest.setAccess_key_id("AKIAJTTC7ICNV2JYIAAA");
+		cTest.setSecret_access_key("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");
+		
 	}
 	
-//	@Test
-//	public void updateBucketIntegTestCreatingEntry() {
-//		Path pathTest = Paths.get("./ibox");
-//		boolean resTest = s3Test.updateBucket(ENTRY_CREATE, pathTest , "test.txt", "./ibox");
-//		assertTrue(resTest);
-//	}
-//	
-//	@Test
-//	public void updateBucketIntegTestModifyEntry() {
-//		Path pathTest = Paths.get("./ibox");
-//		boolean resTest = s3Test.updateBucket(ENTRY_MODIFY, pathTest , "test.txt", "./ibox");
-//		assertTrue(resTest);
-//	}
-//	
-//	@Test
-//	public void updateBucketIntegTestDeletingEntry() {
-//		Path pathTest = Paths.get("./ibox");
-//		boolean resTest = s3Test.updateBucket(ENTRY_DELETE, pathTest , "test.txt", "./ibox");
-//		assertTrue(resTest);
-//	}
+	
+	@Test
+	public void updateBucketIntegTestWithNullInputCreatingEntry() {
+		s3Test.bucketName = "ibox-app-hoho";
+		Path pathTest = Paths.get("./ibox");
+		try{
+			s3Test.updateBucket(ENTRY_CREATE, pathTest , "test.txt", "./ibox");
+		} catch(Exception e) {
+			assertTrue(false);
+		}
+		assertTrue(true);
+		
+	}
+	
+	@Test
+	public void updateBucketIntegTestCreatingEntry() {
+		s3Test.bucketName = "ibox-app-hoho";
+		Path pathTest = Paths.get("./ibox");
+		try{
+			s3Test.updateBucket(ENTRY_CREATE, pathTest , "test.txt", "./ibox");
+		} catch(Exception e) {
+			assertTrue(true);
+		}
+		assertTrue(true);
+	}
+	
+	@Test
+	public void updateBucketIntegTestModifyEntry() {
+		Path pathTest = Paths.get("./ibox");
+		boolean resTest = s3Test.updateBucket(ENTRY_MODIFY, pathTest , "test.txt", "./ibox");
+		assertTrue(resTest);
+	}
+	
+	@Test
+	public void updateBucketIntegTestDeletingEntry() {
+		Path pathTest = Paths.get("./ibox");
+		boolean resTest = s3Test.updateBucket(ENTRY_DELETE, pathTest , "test.txt", "./ibox");
+		assertTrue(resTest);
+	}
 	
 
 }

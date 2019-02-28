@@ -6,19 +6,25 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class EventWatcher {
-	String directory;
-	Path path;
-	public EventWatcher(){
-	}
 	
+	private String directory;
+	private Path path;
+
+	public EventWatcher() {
+	}
+
 	public String getDirectory() {
 		return directory;
 	}
-	
+
 	public void setDirectory(String directory) {
 		this.directory = directory;
 	}
-	
+
+	public Path getPath() {
+		return path;
+	}
+
 	public boolean checkValidDriectory() {
 		if(directory.equals("")) {
 			System.out.println("Path is empty");

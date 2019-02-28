@@ -59,9 +59,11 @@ public class S3Handler {
 	}
 	
 	private boolean createEntry(Path eventDir, String fileName, String directory) {
-		File file = new File(eventDir+"/"+fileName);
+		File file = new File(eventDir+"/"+fileName);		
 		fileName = AWSfileNameGenerator(eventDir, fileName, directory);
-		s3Client.putObject(new PutObjectRequest(bucketName, fileName, file));
+		PutObjectRequest response = new PutObjectRequest(bucketName, fileName, file);
+		//PutObjectRequest response = new PutObjectRequest("ibox-app-hoho", fileName, file);
+		s3Client.putObject(response);
 		return true;
 	}
 	

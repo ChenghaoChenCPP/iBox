@@ -3,14 +3,15 @@ package iBoxCpp;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class CredentialsTest {
 	
-	private Credentials c;
+	private static Credentials c;
 	
-	@Before
-	public void init() {
+	@BeforeClass
+	public static void init() {
 		 c = new Credentials();
 	}
 	
@@ -35,10 +36,17 @@ public class CredentialsTest {
 		assertFalse(c.checkCredentials());
 	}
 	
+//	@Test
+//	public void checkCredentialWithNonEmptyStringTest() {
+//		c.setAccess_key_id("AAAAAAAAAAAAAAAAAAAA");
+//		c.setSecret_access_key("BBBBBBBBBBBBBBBBBBBB");
+//		assertTrue(c.checkCredentials());
+//	}
+	
 	@Test
-	public void checkCredentialWithNonEmptyStringTest() {
-		c.setAccess_key_id("AAAAAAAAAAAAAAAAAAAA");
-		c.setSecret_access_key("BBBBBBBBBBBBBBBBBBBB");
+	public void checkCredentialWithRealKeys() {
+		c.setAccess_key_id("AKIAJTTC7ICNV2JYIAAA");
+		c.setSecret_access_key("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");
 		assertTrue(c.checkCredentials());
 	}
 	

@@ -23,18 +23,18 @@ import static java.nio.file.StandardWatchEventKinds.ENTRY_MODIFY;
 
 public class S3HandlerTest {
 	
-	private S3Handler s3Test;
-	private Credentials cTest;
+	private static S3Handler s3Test;
+	private static Credentials cTest;
 	//private BasicAWSCredentials awsCredsTest;
-	private AmazonS3Client s3ClientTest;
+	private static AmazonS3Client s3ClientTest;
 	
-	@Before
-	public void init() {
+	@BeforeClass
+	public static void init() {
 		s3ClientTest = Mockito.mock(AmazonS3Client.class);
 		s3Test = new S3Handler();
 		cTest = new Credentials();
-		
 	}
+	
 	
 	@Test
 	public void checkS3InfoTestWithCredential() {
