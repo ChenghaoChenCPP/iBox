@@ -26,8 +26,8 @@ public class S3HandlerIntegTest {
 		s3Test = new S3Handler();
 		s3Test.checkS3Info();
 		cTest = new Credentials();
-		cTest.setAccess_key_id("AKIAJTTC7ICNV2JYIAAA");
-		cTest.setSecret_access_key("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");
+		cTest.setAccess_key_id("AKIAJXP7MXI6OAIKDW4A");
+		cTest.setSecret_access_key("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");
 		
 	}
 	

@@ -4,8 +4,8 @@ public final class Credentials {
 	/*Please uses aws s3 access key ID and secret access key
 	 * To obtain please to go aws -> IAM -> Users
 	 */
-	public static String access_key_id = "AKIAJTTC7ICNV2JYIAAA";
-	public static String secret_access_key = "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";
+	public static String access_key_id = "AKIAJXP7MXI6OAIKDW4A";
+	public static String secret_access_key = "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";
 
 	public Credentials() {
 	}
