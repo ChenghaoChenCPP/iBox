@@ -45,8 +45,8 @@ public class CredentialsTest {
 	
 	@Test
 	public void checkCredentialWithRealKeys() {
-		c.setAccess_key_id("AKIAJXP7MXI6OAIKDW4A");
-		c.setSecret_access_key("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");
+		c.setAccess_key_id("AKIAJFEVZHQ2CQVQUGPA");
+		c.setSecret_access_key("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");
 		assertTrue(c.checkCredentials());
 	}
 	
