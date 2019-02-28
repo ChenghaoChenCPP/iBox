@@ -50,6 +50,4 @@ public class CredentialsTest {
 		assertTrue(c.checkCredentials());
 	}
 	
-	
-
 }
