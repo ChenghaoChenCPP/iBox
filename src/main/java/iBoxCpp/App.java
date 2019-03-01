@@ -43,7 +43,6 @@ public class App {
 					 Path eventPath = (Path) event.context();
 					 s3handler.updateBucket(kind, eventDir, eventPath.toString(), directory);
 				}
-
 			} while (watchKey.reset());
 
 		} catch (Exception e) {

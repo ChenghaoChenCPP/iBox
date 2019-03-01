@@ -13,39 +13,54 @@ import com.amazonaws.services.s3.model.DeleteObjectRequest;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 
 public class S3Handler {
-	Credentials credentials;
-	BasicAWSCredentials awsCreds;
-	AmazonS3Client s3Client;
-	String bucketName;
-	
-	public S3Handler() {
-		credentials = new Credentials();
+    private Credentials credentials;
+    private BasicAWSCredentials awsCreds;
+    private AmazonS3Client s3Client;
+    private String bucketName;
+
+    public S3Handler() {
+        credentials = new Credentials();
 	}
-	
-	public boolean checkS3Info() {
+
+	/*
+	 * checks if credentials are valid
+	 * After it creates bucket in S3 if it's missing
+	 */
+
+	public final boolean checkS3Info() {
 		if (!credentials.checkCredentials()) {
 			return false;
 		}
-		awsCreds = new BasicAWSCredentials(credentials.access_key_id, credentials.secret_access_key);
+		String accKeyId = credentials.getAccess_key_id();
+		String secretAccKey = credentials.getSecret_access_key();
+		awsCreds = new BasicAWSCredentials(accKeyId, secretAccKey);
 		s3Client = new AmazonS3Client(awsCreds);
 		return checkBucket();
 	}
 
+	/*
+	 * Creates bucket if it is not exist
+	 */
 	private boolean checkBucket() {
-		bucketName = "ibox-app-" + System.getProperty("user.name").toLowerCase();
+		String systemName = System.getProperty("user.name").toLowerCase();
+		bucketName = "ibox-app-" + systemName;
 		if (!s3Client.doesBucketExist(bucketName)) {
 			s3Client.createBucket(bucketName, "us-west-1");
 		}
 		return true;
 	}
-	
-	public boolean updateBucket(WatchEvent.Kind<?> kind, Path eventDir, String fileName, String directory) {
+
+	/*
+	 * updates bucket on S3 according to the event
+	 */
+
+	public boolean updateBucket(final WatchEvent.Kind<?> kind, final Path eventDir, final String fileName, final String directory) {
 		if (kind == ENTRY_CREATE || kind == ENTRY_MODIFY) {
 			if (createEntry(eventDir, fileName, directory)) {
 				System.out.println("Successfully uploaded " + fileName);
 				return true;
 			}
-			System.out.println("Error when upload file on drive");	
+			System.out.println("Error when upload file on drive");
 		} else {
 			if (deleteEntry(eventDir, fileName, directory)) {
 				System.out.println("Successfully deleted " + fileName);
@@ -55,23 +70,31 @@ public class S3Handler {
 		}
 		return false;
 	}
-	
-	private boolean createEntry(Path eventDir, String fileName, String directory) {
-		File file = new File(eventDir + "/" + fileName);		
-		fileName = AWSfileNameGenerator(eventDir, fileName, directory);
-		PutObjectRequest response = new PutObjectRequest(bucketName, fileName, file);
-		//PutObjectRequest response = new PutObjectRequest("ibox-app-hoho", fileName, file);
+
+	/*
+	 * creates file on s3
+	 */
+	private boolean createEntry(final Path eventDir, final String fileName, final String directory) {
+		File file = new File(eventDir + "/" + fileName);
+		String newfileName = AWSfileNameGenerator(eventDir, fileName, directory);
+		PutObjectRequest response = new PutObjectRequest(bucketName, newfileName, file);
 		s3Client.putObject(response);
 		return true;
 	}
 
-	private boolean deleteEntry(Path eventDir, String fileName, String directory) {
-		fileName = AWSfileNameGenerator(eventDir, fileName, directory);
-		 s3Client.deleteObject(new DeleteObjectRequest(bucketName, fileName));
+	/*
+	 * removes file on s3
+	 */
+	private boolean deleteEntry(final Path eventDir, final String fileName, final String directory) {
+		String newFileName = AWSfileNameGenerator(eventDir, fileName, directory);
+		 s3Client.deleteObject(new DeleteObjectRequest(bucketName, newFileName));
 		 return true;
 	}
 
-	private String AWSfileNameGenerator(Path eventDir, String fileName, String directory) {
+	/*
+	 * generates valid path like './directory/fileName'
+	 */
+	private String AWSfileNameGenerator(final Path eventDir, final String fileName, final String directory) {
 		String eventDirectory = eventDir.toString();
 		if (eventDirectory.equals(directory)) {
 			return fileName;
